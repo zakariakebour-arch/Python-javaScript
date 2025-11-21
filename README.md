@@ -19,7 +19,7 @@ El código consta de dos partes principales:
 
 Este proyecto es ideal para aprender a trabajar con formularios en Flask, cómo manejar datos en formato JSON y cómo interactuar con ellos en una interfaz web utilizando JavaScript.
 
-## ¿Cómo funciona?
+## Cómo funciona?
 
 1. El usuario ingresa sus datos en el formulario de `index.html` (nombre, apellidos, edad, teléfono).
 2. Cuando el formulario se envía, Flask recibe los datos y los guarda en el archivo `archivo.json`.
