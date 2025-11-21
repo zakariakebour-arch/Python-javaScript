@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas de presentación</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        #principal{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .tarjeta {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            width: 250px;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="principal"></div>
+
+    <script>
+        fetch("static/archivo.json")
+            .then(respuesta =>
+                respuesta.json() /* Cogemos la respuesta recibida y la pasamos a JSON */
+            )
+            .then(datos => {
+                /* Aquí manipulamos los datos */
+                const tarjetaContainer = document.querySelector("#principal");
+
+                // Recorremos el array de personas
+                datos.forEach(persona => {
+                    const tarjeta = document.createElement("div");
+                    tarjeta.classList.add("tarjeta");
+
+                    tarjeta.innerHTML = `
+                        <strong>Nombre:</strong> ${persona.nombre} <br>
+                        <strong>Apellidos:</strong> ${persona.apellidos} <br>
+                        <strong>Edad:</strong> ${persona.edad} <br>
+                        <strong>Teléfono:</strong> ${persona.telefono}
+                    `;
+
+                    tarjetaContainer.appendChild(tarjeta);
+                });
+            })
+            .catch(error => {
+                console.log("Vaya", error);
+            });
+    </script>
+</body>
+</html>
